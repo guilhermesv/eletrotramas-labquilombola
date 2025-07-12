@@ -4,9 +4,9 @@
 // CONFIGURACAO ESP E FITA
 #define LED_PIN     4   
 #define MIC_PIN     34
-#define NUM_LEDS    864 //192
+#define NUM_LEDS    1200 //192
 #define VOLTS       5
-#define MILIAMPS    2000          
+#define MILIAMPS    8000          
 
 CRGB leds_src_1[NUM_LEDS];
 CRGB leds_src_2[NUM_LEDS];
