@@ -73,12 +73,14 @@ void loop() {
   // delay(10);
 
   // // Loop Acende tudo Máximo
-  // for (int i = 0; i < NUM_LEDS; i++) {
-  //   // leds[i] = CRGB(255, 255, 255);
-  //   leds[i] = CRGB::White;
-  // }
-  // delay(50);
-  // FastLED.show();
+  for (int i = 0; i < NUM_LEDS; i++) {
+    leds[i] = CRGB(255, 0, 255);
+    // leds[i] = CRGB::Red;
+    // leds[i] = CRGB::Green;
+    // leds[i] = CRGB::White;
+  }
+  delay(50);
+  FastLED.show();
 
   // Loop Paleta
   // fill_palette(leds, NUM_LEDS, paleta_inicio, 1, paleta, 255, LINEARBLEND);
@@ -97,13 +99,30 @@ void loop() {
   // FastLED.show();
 
   // Loop Paleta noise
-  uint16_t x = 0;
-  int scale = 10;
-  uint16_t t = millis() / 4;
+  // uint16_t x = 0;
+  // int scale = 10;
+  // uint16_t t = millis() / 4;
 
-  for (int i = 0; i < NUM_LEDS; i++) {
-    uint8_t noise = inoise8(i * scale + x + t);
-    leds[i] = ColorFromPalette(paleta, noise, 255, LINEARBLEND);
-  }
-  FastLED.show();
+  // for (int i = 0; i < NUM_LEDS; i++) {
+  //   uint8_t noise = inoise8(i * scale + x + t);
+  //   leds[i] = ColorFromPalette(paleta, noise, 255, LINEARBLEND);
+  // }
+  // FastLED.show();
+
+  //// Loop Noise Simples
+  // uint16_t noise_x = 0;
+  // uint16_t noise_time = millis() / 4;
+  //  fill_noise8(
+  //   leds,           // Array de LEDs
+  //   NUM_LEDS,       // Número de LEDs
+  //   1,              // Octaves (camadas de ruído)
+  //   noise_x,        // Posição X no espaço de ruído
+  //   30,             // Escala (quanto maior, mais granular)
+  //   1,              // Hue octaves (variação de cor)
+  //   noise_x,        // Hue x
+  //   30,             // Hue scale (variação de cor)
+  //   noise_time      // Hue time
+  // );
+  // FastLED.show();
+
 }
