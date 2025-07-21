@@ -162,7 +162,13 @@ void setup() {
   FastLED.clear();
   FastLED.setBrightness(BRIGHTNESS);
   s = random8(PADROES_QTD); // Alterna ente os padrões de tempo em tempo
-  hue_offset = random8();
+  hue_offset = random(127);
+  regra = random8(REGRAS_QTD);
+  
+  // Serial.begin(115200);
+  // Serial.print(s, regra, hue_offset);
+  // Serial.println("--------");
+
 }
 
 void loop() {
@@ -193,7 +199,7 @@ void loop() {
     regra = random8(REGRAS_QTD);
   }
 
-  EVERY_N_MINUTES(1) {
+  EVERY_N_SECONDS(30) {
     hue_offset = (hue_offset + 1) % 255;
   }
 
