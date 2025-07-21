@@ -154,6 +154,7 @@ char* regras[4] = {
 
 int t = NUM_LEDS * 4;
 int s = 0;
+int hue_offset = 0;
 
 void setup() {
   // Inicializa a fita de LED
@@ -161,6 +162,7 @@ void setup() {
   FastLED.clear();
   FastLED.setBrightness(BRIGHTNESS);
   s = random8(PADROES_QTD); // Alterna ente os padrões de tempo em tempo
+  hue_offset = random8();
 }
 
 void loop() {
@@ -173,7 +175,8 @@ void loop() {
     int padrao_coluna = i % PADRAO_COL_QTD;
     int padrao_linha = (barra_offset + t) % PADRAO_LIN_QTD;
     if (padroes[s][padrao_linha][padrao_coluna] == regras[regra][padrao_coluna] ) {
-      leds[i] = CRGB::Red;
+      // leds[i] = CRGB::Red;
+      leds[i] = CHSV(hue_offset, 255, 255);
     }
   }
 
@@ -188,6 +191,10 @@ void loop() {
   EVERY_N_MILLISECONDS(5000) {
     s = random8(PADROES_QTD);
     regra = random8(REGRAS_QTD);
+  }
+
+  EVERY_N_MINUTES(1) {
+    hue_offset = (hue_offset + 1) % 255;
   }
 
   FastLED.show();
