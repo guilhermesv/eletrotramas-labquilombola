@@ -6,6 +6,7 @@
 
 CRGB leds[NUM_LEDS];
 uint8_t brilho[NUM_LEDS] = {0};
+uint8_t tom[NUM_LEDS] = {0};
 
 // DEFINICOES MIC
 #define MIC_PIN 34   // Pino do microfone
@@ -24,58 +25,59 @@ void setup() {
 
 void loop() {
   // MIC
-  // Ajuste gráfico
+  // int amplitude = getAmplitude();  
+  int amplitude = getSmoothedAmplitude();  
+  int intensidade;
+
+  // LED
+  // intensidade = 100;
+  intensidade = map(amplitude, 0, 3000, 0, 255);
+  intensidade = constrain(intensidade, 0, 255);
+
+  if (amplitude > 0 && amplitude <= FAIXA_A) {
+    for (int i = 0; i < 48; i++) {
+      int led_indice = (i + c) % NUM_LEDS;
+      brilho[led_indice] = qadd8(brilho[led_indice], intensidade);
+      tom[led_indice] = 0;
+    }
+  }
+
+  if (amplitude > FAIXA_A && amplitude <= FAIXA_B) {
+    for (int i = 48; i < 96; i++) {
+      int led_indice = (i + c) % NUM_LEDS;
+      brilho[led_indice] = qadd8(brilho[led_indice], intensidade);
+      tom[led_indice] = 100;
+    }
+  }
+
+  if (amplitude > FAIXA_B && amplitude <= FAIXA_C) {
+    for (int i = 96; i < 144; i++) {
+      int led_indice = (i + c) % NUM_LEDS;
+      brilho[led_indice] = qadd8(brilho[led_indice], intensidade);
+      tom[led_indice] = 200;
+    }
+  }
+  // c++;
+
+  EVERY_N_MILLISECONDS(20) {
+    for (int i = 0; i < NUM_LEDS; i++) {
+      leds[i] = CHSV(tom[i], 255, brilho[i]);
+      brilho[i] = scale8(brilho[i], 255 - 10);
+    }
+  }
+  FastLED.show();
+  delay(20);
+
+  /// Gráfico
   int rangelimit = 4500;
+  // int rangelimit = 255;
   Serial.print(0);
   Serial.print(" ");
   Serial.print(rangelimit);
   Serial.print(" ");
-
-  int amplitude = getAmplitude();  
-  // int amplitude = getsSmoothedAmplitude();  
   Serial.println(amplitude);
-  // Serial.print("Amplitude: ");
-  // Serial.println(peakToPeak);
-  delay(10);
+  Serial.println(intensidade);
 
-  // LED
-  EVERY_N_MILLISECONDS(500) {
-    // int intensidade = map(amplitude, 0, 3000, 0, 255);
-    // intensidade = constrain(intensidade, 0, 255);
-
-    int intensidade = 100;
-
-    if (amplitude > 0 && amplitude <= FAIXA_A) {
-      for (int i = 0; i < 48; i++) {
-        int led_indice = (i + c) % NUM_LEDS;
-        brilho[led_indice] = qadd8(brilho[led_indice], 10);
-        leds[led_indice] = CHSV(127, 255, brilho[led_indice]);
-      }
-    }
-
-    if (amplitude > FAIXA_A && amplitude <= FAIXA_B) {
-      for (int i = 48; i < 96; i++) {
-        int led_indice = (i + c) % NUM_LEDS;
-        brilho[led_indice] = qadd8(brilho[led_indice], 10);
-        leds[led_indice] = CHSV(127, 255, brilho[led_indice]);
-      }
-    }
-
-    if (amplitude > FAIXA_B && amplitude <= FAIXA_C) {
-      for (int i = 96; i < 144; i++) {
-        int led_indice = (i + c) % NUM_LEDS;
-        brilho[led_indice] = qadd8(brilho[led_indice], 255);
-        leds[led_indice] = CHSV(127, 255, brilho[led_indice]);
-      }
-    }
-
-    c++;
-  }
-
-  EVERY_N_MILLISECONDS(20) {
-    fadeToBlackBy(leds, NUM_LEDS, 10);
-  }
-  FastLED.show();
 }
 
 // Função para calcular a amplitude (volume)
