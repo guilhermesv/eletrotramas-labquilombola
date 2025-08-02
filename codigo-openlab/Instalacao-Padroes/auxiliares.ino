@@ -1,56 +1,38 @@
+// Função para calcular a amplitude (volume)
 int getAmplitude() {
-  int signalMax = 0;
-  int signalMin = 4095;
+  int signalMax = 0;     // Valor máximo detectado
+  int signalMin = 4095;  // Valor mínimo detectado (resolução de 12 bits)
 
-  for (int i = 0; i < A_SAMPLES; i++) {
+  for (int i = 0; i < A_SAMPLES; i++) {  // Coleta exatamente SAMPLES amostras
     int sample = analogRead(MIC_PIN);
     if (sample > signalMax) {
-      signalMax = sample; 
+      signalMax = sample;  // Atualiza o valor máximo
     }
     if (sample < signalMin) {
-      signalMin = sample;
+      signalMin = sample;  // Atualiza o valor mínimo
     }
   }
-  return signalMax - signalMin;
+  return signalMax - signalMin;  // Amplitude do sinal
 }
 
-void incrementa_tempo() {
-  unsigned long currentMillis = millis();
-
-  if (currentMillis - previousMillis_1 >= interval_1) {
-    previousMillis_1 = currentMillis;
-    t_1++;
-    // Serial.print("t_1: ");
-    // Serial.println(t_1);
+// Função para calcular a amplitude suavizada
+int getSmoothedAmplitude() {
+  static int previousAmplitude = 0;
+  const float smoothing = 0.3;  // Ajuste este valor (0-1) para mais/menos suavização
+  
+  int signalMax = 0;
+  int signalMin = 4095;
+  
+  for (int i = 0; i < A_SAMPLES; i++) {
+    int sample = analogRead(MIC_PIN);
+    if (sample > signalMax) signalMax = sample;
+    if (sample < signalMin) signalMin = sample;
   }
-
-  if (currentMillis - previousMillis_2 >= interval_2) {
-    previousMillis_2 = currentMillis;
-    t_2++;
-    // Serial.print("t_2: ");
-    // Serial.println(t_2);
-  }
-
-  t_g++;
+  
+  int currentAmplitude = signalMax - signalMin;
+  int smoothed = smoothing * currentAmplitude + (1 - smoothing) * previousAmplitude;
+  previousAmplitude = smoothed;
+  
+  return smoothed;
 }
 
-void efeito_proximo() {
-  efeito_contador = (efeito_contador + 1)%3;
-  if (src_1_ativa) efeito_src_1 = efeito_contador;  // Determine which source array for new pattern
-  else efeito_src_2 = efeito_contador;
-
-  src_1_ativa = !src_1_ativa;                           // Swap source array for next time around
-}
-
-void efeito_run(uint8_t efeito, CRGB *leds) {
-  switch (efeito) {
-    case 0:
-      break;
-    case 1:
-      efeito_amplitude_noise(leds);
-      break;
-    case 2:
-      efeito_amplitude_ponto(leds);
-      break;
-  }
-}
