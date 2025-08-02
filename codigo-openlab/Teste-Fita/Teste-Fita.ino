@@ -64,23 +64,23 @@ void loop() {
   // delay(50);
 
   // Loop Economico + Fade 2
-  // leds[c%1200] = CRGB::White;
-  // EVERY_N_MILLISECONDS(20) {
-  //   fadeToBlackBy(leds, NUM_LEDS, 10);
-  // }
-  // FastLED.show();
-  // c++;
-  // delay(10);
+  leds[c%1200] = CRGB::White;
+  EVERY_N_MILLISECONDS(20) {
+    fadeToBlackBy(leds, NUM_LEDS, 10);
+  }
+  FastLED.show();
+  c++;
+  delay(10);
 
   // // Loop Acende tudo Máximo
-  for (int i = 0; i < NUM_LEDS; i++) {
-    leds[i] = CRGB(255, 0, 255);
-    // leds[i] = CRGB::Red;
-    // leds[i] = CRGB::Green;
-    // leds[i] = CRGB::White;
-  }
-  delay(50);
-  FastLED.show();
+  // for (int i = 0; i < NUM_LEDS; i++) {
+  //   leds[i] = CRGB(255, 0, 255);
+  //   // leds[i] = CRGB::Red;
+  //   // leds[i] = CRGB::Green;
+  //   // leds[i] = CRGB::White;
+  // }
+  // delay(50);
+  // FastLED.show();
 
   // Loop Paleta
   // fill_palette(leds, NUM_LEDS, paleta_inicio, 1, paleta, 255, LINEARBLEND);
