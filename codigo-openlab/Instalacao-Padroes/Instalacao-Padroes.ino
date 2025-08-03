@@ -7,7 +7,7 @@
 // CONFIGURACAO FITA
 #define LED_PIN     4   
 #define BAR_LEDS    48
-#define NUM_LEDS    192 // 1200 ou 192
+#define NUM_LEDS    300 // 1200 ou 192
 CRGB leds[NUM_LEDS];
 uint8_t brilho[NUM_LEDS] = {0};
 uint8_t tom[NUM_LEDS] = {0};
