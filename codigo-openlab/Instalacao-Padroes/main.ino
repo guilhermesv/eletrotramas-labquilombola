@@ -5,8 +5,11 @@ void setup() {
   pinMode(MIC_PIN, INPUT);
   Serial.begin(115200);
 
-  p = random8(PADROES_QTD);
-  r = random8(REGRAS_QTD);
+  // p = random8(PADROES_QTD);
+  // r = random8(REGRAS_QTD);
+
+  p = 6;
+  r = 0;
 }
 
 void loop() {
@@ -96,7 +99,7 @@ void loop() {
   }
 
   EVERY_N_SECONDS(10) {
-    p = random8(PADROES_QTD);
+    // p = random8(PADROES_QTD);
   }
 
 
