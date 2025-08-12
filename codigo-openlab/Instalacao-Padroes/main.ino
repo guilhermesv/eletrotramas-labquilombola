@@ -123,6 +123,9 @@ void loop() {
     // p_B = (p_A+1) % PADROES_QTD;
     // p_C = (p_B+1) % PADROES_QTD;
 
+  }
+
+  EVERY_N_SECONDS(1) {
     cor_faixa_A = (cor_faixa_A + 1)%255;
     cor_faixa_B = (cor_faixa_B + 1)%255;
     cor_faixa_C = (cor_faixa_C + 1)%255;
