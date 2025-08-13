@@ -5,9 +5,9 @@ void setup() {
   pinMode(MIC_PIN, INPUT);
   Serial.begin(115200);
 
-  p_A = random8(PADROES_QTD);
-  p_B = random8(PADROES_QTD);
-  p_C = random8(PADROES_QTD);
+  p_A = random8(PADROES_QTD-1);
+  p_B = random8(PADROES_QTD-1);
+  p_C = random8(PADROES_QTD-1);
   // r = random8(REGRAS_QTD);
   
   // p = 6;
@@ -57,7 +57,7 @@ void loop() {
         int padrao_coluna = (i) % PADRAO_COL_QTD;
         int regra_coluna = (i) % REGRAS_TAM;
         int padrao_linha = (barra_offset + t) % PADRAO_LIN_QTD;
-        if (padroes[(p_B)%PADROES_QTD][padrao_linha][padrao_coluna] == regras[0][regra_coluna] ) {
+        if (padroes[p_B][padrao_linha][padrao_coluna] == regras[0][regra_coluna] ) {
           CRGB cor_atual = ColorFromPalette(pal_faixa_B, cor_faixa_B, 255, LINEARBLEND);
           CHSV cor_atual_HSV = rgb2hsv_approximate(cor_atual);       
           if(barra_offset % 2 == 0) {
@@ -85,7 +85,7 @@ void loop() {
         int padrao_coluna = (i) % PADRAO_COL_QTD;
         int regra_coluna = (i) % REGRAS_TAM;
         int padrao_linha = (barra_offset + t) % PADRAO_LIN_QTD;
-        if (padroes[(p_C)%PADROES_QTD][padrao_linha][padrao_coluna] == regras[0][regra_coluna] ) {
+        if (padroes[p_C][padrao_linha][padrao_coluna] == regras[0][regra_coluna] ) {
           CRGB cor_atual = ColorFromPalette(pal_faixa_C, cor_faixa_C, 255, LINEARBLEND);
           CHSV cor_atual_HSV = rgb2hsv_approximate(cor_atual);
           if(barra_offset % 2 == 0) {
@@ -115,9 +115,9 @@ void loop() {
   }
 
   EVERY_N_SECONDS(8) {
-    p_A = random8(PADROES_QTD);
-    p_B = random8(PADROES_QTD);
-    p_C = random8(PADROES_QTD);
+    p_A = random8(PADROES_QTD-1);
+    p_B = random8(PADROES_QTD-1);
+    p_C = random8(PADROES_QTD-1);
 
     // p_A = (p_A+1) % PADROES_QTD;
     // p_B = (p_A+1) % PADROES_QTD;
@@ -136,9 +136,10 @@ void loop() {
 
   /// Gráfico
   int rangelimit = 4500;
-  Serial.print(0);
-  Serial.print(" ");
-  Serial.print(rangelimit);
-  Serial.print(" ");
-  Serial.println(amplitude);
+  // Serial.print(0);
+  // Serial.print(" ");
+  // Serial.print(rangelimit);
+  // Serial.print(" ");
+  // Serial.println(amplitude);
+  Serial.println(cor_faixa_A);
 }
