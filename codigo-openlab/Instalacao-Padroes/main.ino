@@ -19,7 +19,7 @@ void loop() {
   // int amplitude = getAmplitude();  
   int amplitude = getSmoothedAmplitude();  
 
-  if (amplitude > 0 && amplitude <= FAIXA_A) {
+  if (amplitude <= FAIXA_A) { //(amplitude > 0 && amplitude <= FAIXA_A) {
     int barra_offset = 0;
     int intensidade = map(amplitude, 0, FAIXA_A, 0, 255);
     intensidade = constrain(intensidade, 0, 255);
@@ -47,7 +47,7 @@ void loop() {
     }   
   }
 
-  if (amplitude > FAIXA_A && amplitude <= FAIXA_B) {
+  if (amplitude >= 1500) { //(amplitude > FAIXA_A && amplitude <= FAIXA_B) {
     int barra_offset = 0;
     int intensidade = map(amplitude, FAIXA_A, FAIXA_B, 0, 255);
     intensidade = constrain(intensidade, 0, 255);
@@ -75,7 +75,7 @@ void loop() {
     }
   }
 
-  if (amplitude > FAIXA_B && amplitude <= FAIXA_C) {
+  if (amplitude >= 2500) { //(amplitude > FAIXA_B && amplitude <= FAIXA_C) {
     int barra_offset = 0;
     int intensidade = map(amplitude, FAIXA_B, FAIXA_C, 0, 255);
     intensidade = constrain(intensidade, 0, 255);
@@ -115,17 +115,14 @@ void loop() {
   }
 
   EVERY_N_SECONDS(8) {
-    p_A = random8(PADROES_QTD-1);
-    p_B = random8(PADROES_QTD-1);
-    p_C = random8(PADROES_QTD-1);
+    // p_A = random8(PADROES_QTD-1);
+    // p_B = random8(PADROES_QTD-1);
+    // p_C = random8(PADROES_QTD-1);
 
-    // p_A = (p_A+1) % PADROES_QTD;
-    // p_B = (p_A+1) % PADROES_QTD;
-    // p_C = (p_B+1) % PADROES_QTD;
+    p_A = (p_A+1) % PADROES_QTD;
+    p_B = (p_A+1) % PADROES_QTD;
+    p_C = (p_B+1) % PADROES_QTD;
 
-  }
-
-  EVERY_N_SECONDS(1) {
     cor_faixa_A = (cor_faixa_A + 1)%255;
     cor_faixa_B = (cor_faixa_B + 1)%255;
     cor_faixa_C = (cor_faixa_C + 1)%255;
@@ -141,5 +138,10 @@ void loop() {
   // Serial.print(rangelimit);
   // Serial.print(" ");
   // Serial.println(amplitude);
-  Serial.println(cor_faixa_A);
+  
+  Serial.print(p_A);
+  Serial.print(" ");
+  Serial.print(p_B);
+  Serial.print(" " );
+  Serial.println(p_C);
 }
