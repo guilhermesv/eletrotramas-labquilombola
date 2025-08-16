@@ -2,7 +2,7 @@
 
 // DEFINICOES
 #define ledPin 4       // Porta Digital
-#define NUM_LEDS 1200  // Numero de leds
+#define NUM_LEDS 864  // Numero de leds
 CRGB leds[NUM_LEDS];   // Cria array de leds
 int c = 0;
 
@@ -55,7 +55,7 @@ void loop() {
   // }
 
   // // Loop Economico + Fade 1
-  // leds[c%1200] = CRGB::Blue;
+  // leds[c%NUM_LEDS] = CRGB::Blue;
   // EVERY_N_MILLISECONDS(20) {
   //   fadeToBlackBy(leds, NUM_LEDS, 20);
   // }
@@ -64,13 +64,13 @@ void loop() {
   // delay(50);
 
   // Loop Economico + Fade 2
-  leds[c%1200] = CRGB::White;
-  EVERY_N_MILLISECONDS(20) {
-    fadeToBlackBy(leds, NUM_LEDS, 10);
-  }
-  FastLED.show();
-  c++;
-  delay(10);
+  // leds[c%NUM_LEDS] = CRGB::White;
+  // EVERY_N_MILLISECONDS(20) {
+  //   fadeToBlackBy(leds, NUM_LEDS, 10);
+  // }
+  // FastLED.show();
+  // c++;
+  // delay(10);
 
   // // Loop Acende tudo Máximo
   // for (int i = 0; i < NUM_LEDS; i++) {
@@ -91,12 +91,21 @@ void loop() {
 
   // // Loop Paleta Random
   // EVERY_N_MILLISECONDS(50) {
-  //   for(int i = 0; i < 20; i++) {
+  //   for(int i = 0; i < 50; i++) {
   //     leds[random16(0, NUM_LEDS - 1)] = ColorFromPalette(paleta, random8(), 255, LINEARBLEND);
   //   };
   // }
   // fadeToBlackBy(leds, NUM_LEDS, 20);
   // FastLED.show();
+
+  EVERY_N_MILLISECONDS(50) {
+    for(int i = 0; i < 50; i++) {
+      leds[random16(0, NUM_LEDS - 1)].val = 255;
+    };
+  }
+  fadeToBlackBy(leds, NUM_LEDS, 20);
+  FastLED.show();
+
 
   // Loop Paleta noise
   // uint16_t x = 0;
