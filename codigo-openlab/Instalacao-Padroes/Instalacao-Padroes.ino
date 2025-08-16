@@ -9,8 +9,8 @@
 #define BAR_LEDS    48
 #define NUM_LEDS    864 // 864
 CRGB leds[NUM_LEDS];
-uint8_t brilho[NUM_LEDS] = {0};
-uint8_t tom[NUM_LEDS] = {0};
+// uint8_t brilho[NUM_LEDS] = {0};
+// // uint8_t tom[NUM_LEDS] = {0};
 
 // CONFIGURACAO AUDIO
 #define MIC_PIN     34

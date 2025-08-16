@@ -17,23 +17,22 @@ void setup() {
 void loop() {
   // MIC
   // int amplitude = getAmplitude();  
-  int amplitude = getSmoothedAmplitude();  
+  int amplitude = getSmoothedAmplitude();
+  int intensidade = map(amplitude, 0, 3000, 0, 255);
+  intensidade = constrain(intensidade, 0, 255);
 
-  if(amplitude <= FAIXA_A) {
-    processa_faixa(amplitude, FAIXA_A, p_A, cor_faixa_A);
+  if(amplitude <= FAIXA_A) { 
+    processa_faixa(p_A, intensidade, 0, 0);
   }
   if(amplitude > FAIXA_A) {
-    processa_faixa(amplitude, FAIXA_B, p_B, cor_faixa_B);
+    processa_faixa(p_B, 0, intensidade, 0);
   }
   if(amplitude > FAIXA_B) {
-    processa_faixa(amplitude, FAIXA_C, p_C, cor_faixa_C);
+    processa_faixa(p_C, 0, 0, intensidade);
   }
 
   EVERY_N_MILLISECONDS(20) {
-    for (int i = 0; i < NUM_LEDS; i++) {
-      leds[i] = CHSV(tom[i], 255, brilho[i]);
-      brilho[i] = scale8(brilho[i], 255 - 80);
-    }
+    fadeToBlackBy(leds, NUM_LEDS, 80);
   }
 
   EVERY_N_MILLISECONDS(100) {
@@ -58,11 +57,11 @@ void loop() {
   delay(50);
 
   /// Gráfico
-  int rangelimit = 4500;
-  Serial.print(0);
-  Serial.print(" ");
-  Serial.print(rangelimit);
-  Serial.print(" ");
-  Serial.println(amplitude);
+  // int rangelimit = 4500;
+  // Serial.print(0);
+  // Serial.print(" ");
+  // Serial.print(rangelimit);
+  // Serial.print(" ");
+  // Serial.println(amplitude);
   
 }
