@@ -7,7 +7,7 @@
 // CONFIGURACAO FITA
 #define LED_PIN     4   
 #define BAR_LEDS    48
-#define NUM_LEDS    864
+#define NUM_LEDS    864 // 864
 CRGB leds[NUM_LEDS];
 uint8_t brilho[NUM_LEDS] = {0};
 uint8_t tom[NUM_LEDS] = {0};
@@ -59,7 +59,7 @@ CRGBPalette16 pal_faixa_C = g_b_r;
 uint8_t cor_faixa_C = 0;
 
 // GLOBAIS AUXILIARES
-int t = NUM_LEDS * 4; //inicar o t assim evita uns problemas com módulo
+int t = 0;
 
 // REGRAS
 
