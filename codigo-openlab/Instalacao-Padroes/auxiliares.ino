@@ -18,7 +18,7 @@ int getAmplitude() {
 // Função para calcular a amplitude suavizada
 int getSmoothedAmplitude() {
   static int previousAmplitude = 0;
-  const float smoothing = 0.3;  // Ajuste este valor (0-1) para mais/menos suavização
+  const float smoothing = 0.6;  // Ajuste este valor (0-1) para mais/menos suavização
   
   int signalMax = 0;
   int signalMin = 4095;

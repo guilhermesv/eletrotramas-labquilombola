@@ -15,6 +15,7 @@ CRGB leds[NUM_LEDS];
 // CONFIGURACAO AUDIO
 #define MIC_PIN     34
 #define A_SAMPLES   256 // Número de amostras para analisar amplitude
+#define RUIDO   600
 #define FAIXA_A 1000
 #define FAIXA_B 1200
 #define FAIXA_C 1800
