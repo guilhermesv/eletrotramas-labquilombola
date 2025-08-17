@@ -20,37 +20,39 @@ void loop() {
   int intensidade = map(amplitude, 0, 3000, 0, 255);
   intensidade = constrain(intensidade, 0, 255);
 
-  processa_faixa(15, 255, 0, 0);
-  // if(amplitude <= FAIXA_A) { 
-  //   processa_faixa(p_A, intensidade, 0, 0);
-  // }
-  // if(amplitude > FAIXA_B) {
-  //   processa_faixa(p_B, 0, intensidade, 0);
-  // }
-  // if(amplitude > FAIXA_C) {
-  //   processa_faixa(p_C, 0, 0, intensidade);
-  // }
+  if(amplitude <= FAIXA_A) { 
+    CRGB cor_atual = ColorFromPalette(pal_faixa_A, cor_faixa_A, intensidade, LINEARBLEND);
+    processa_faixa(p_A, cor_atual);
+  }
+  if(amplitude > FAIXA_B) {
+    CRGB cor_atual = ColorFromPalette(pal_faixa_B, cor_faixa_B, intensidade, LINEARBLEND);
+    processa_faixa(p_B, cor_atual);
+  }
+  if(amplitude > FAIXA_C) {
+    CRGB cor_atual = ColorFromPalette(pal_faixa_C, cor_faixa_C, intensidade, LINEARBLEND);
+    processa_faixa(p_C, cor_atual);
+  }
 
   EVERY_N_MILLISECONDS(20) {
     fadeToBlackBy(leds, NUM_LEDS, 100);
   }
 
   EVERY_N_MILLISECONDS(50) {
-    t++;
+    t = (t + 1) % NUM_LEDS;
   }
 
   EVERY_N_SECONDS(8) {
-    // p_A = random8(PADROES_QTD-1);
-    // p_B = random8(PADROES_QTD-1);
-    // p_C = random8(PADROES_QTD-1);
+    p_A = random8(PADROES_QTD-1);
+    p_B = random8(PADROES_QTD-1);
+    p_C = random8(PADROES_QTD-1);
 
-    p_A = (p_A+1) % PADROES_QTD;
-    p_B = (p_A+1) % PADROES_QTD;
-    p_C = (p_B+1) % PADROES_QTD;
+    // p_A = (p_A+1) % PADROES_QTD;
+    // p_B = (p_A+1) % PADROES_QTD;
+    // p_C = (p_B+1) % PADROES_QTD;
 
-    // cor_faixa_A = (cor_faixa_A + 10)%255;
-    // cor_faixa_B = (cor_faixa_B + 1)%255;
-    // cor_faixa_C = (cor_faixa_C + 1)%255;
+    cor_faixa_A = (cor_faixa_A + 1)%255;
+    cor_faixa_B = (cor_faixa_B + 1)%255;
+    cor_faixa_C = (cor_faixa_C + 1)%255;
   }
 
   FastLED.show();
@@ -65,3 +67,4 @@ void loop() {
   Serial.println(amplitude);
   
 }
+
