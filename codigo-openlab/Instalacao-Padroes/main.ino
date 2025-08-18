@@ -15,6 +15,7 @@ void setup() {
 }
 
 void loop() {
+
   // MIC
   // int amplitude = getAmplitude();  
   int amplitude = getSmoothedAmplitude();  
@@ -139,9 +140,15 @@ void loop() {
   // Serial.print(" ");
   // Serial.println(amplitude);
   
-  Serial.print(p_A);
-  Serial.print(" ");
-  Serial.print(p_B);
-  Serial.print(" " );
-  Serial.println(p_C);
+  // Seletor de Padrão
+  // Serial.print(p_A);
+  // Serial.print(" ");
+  // Serial.print(p_B);
+  // Serial.print(" " );
+  // Serial.println(p_C);
+
+  // Memoria livre
+  Serial.print("Memória livre (bytes): ");
+  Serial.println(ESP.getFreeHeap());
+  
 }
