@@ -8,6 +8,7 @@
 #define LED_PIN     4   
 #define BAR_LEDS    48
 #define NUM_LEDS    864 // 864
+#define RUIDO_BRILHO     5
 CRGB leds[NUM_LEDS];
 // uint8_t brilho[NUM_LEDS] = {0};
 // // uint8_t tom[NUM_LEDS] = {0};

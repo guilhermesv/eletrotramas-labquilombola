@@ -17,9 +17,11 @@ void setup() {
 void loop() {
   // MIC  
   int amplitude = getSmoothedAmplitude();
-  int intensidade = map(amplitude, RUIDO, 3000, 0, 255);
-  intensidade = constrain(intensidade, 0, 255);
+  int intensidade = map(amplitude, RUIDO, 3000, RUIDO_BRILHO, 255);
+  intensidade = constrain(intensidade, RUIDO_BRILHO, 255);
 
+  CRGB cor_atual = ColorFromPalette(pal_faixa_A, cor_faixa_A, RUIDO_BRILHO, LINEARBLEND);
+  processa_faixa(p_A, cor_atual);
   if(amplitude >= RUIDO) { 
     CRGB cor_atual = ColorFromPalette(pal_faixa_A, cor_faixa_A, intensidade, LINEARBLEND);
     processa_faixa(p_A, cor_atual);
