@@ -47,7 +47,7 @@ DEFINE_GRADIENT_PALETTE(b_r_g){
   255,   0,   0, 255,
 };
 CRGBPalette16 pal_faixa_B = b_r_g;
-uint8_t cor_faixa_B = 0;
+uint8_t cor_faixa_B = 80;
 
 DEFINE_GRADIENT_PALETTE(g_b_r){
   0  ,   0, 255,   0,
@@ -56,7 +56,7 @@ DEFINE_GRADIENT_PALETTE(g_b_r){
   255,   0, 255,   0,
 };
 CRGBPalette16 pal_faixa_C = g_b_r;
-uint8_t cor_faixa_C = 0;
+uint8_t cor_faixa_C = 120;
 
 // GLOBAIS AUXILIARES
 int t = 0;
