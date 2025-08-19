@@ -35,3 +35,7 @@ int getSmoothedAmplitude() {
   
   return smoothed;
 }
+
+int sorteia_sentido() {
+  return random8() > 127 ? 1 : -1;
+}

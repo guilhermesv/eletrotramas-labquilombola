@@ -8,6 +8,10 @@ void setup() {
   p_A = random8(PADROES_QTD-1);
   p_B = random8(PADROES_QTD-1);
   p_C = random8(PADROES_QTD-1);
+  
+  p_A_sentido = sorteia_sentido();
+  p_B_sentido = sorteia_sentido();
+  p_C_sentido = sorteia_sentido();
   // r = random8(REGRAS_QTD);
   
   // p = 6;
@@ -21,18 +25,18 @@ void loop() {
   intensidade = constrain(intensidade, RUIDO_BRILHO, 255);
 
   CRGB cor_atual = ColorFromPalette(pal_faixa_A, cor_faixa_A, RUIDO_BRILHO, LINEARBLEND);
-  processa_faixa(p_A, cor_atual);
+  processa_faixa(p_A, cor_atual, p_A_sentido);
   if(amplitude >= RUIDO) { 
     CRGB cor_atual = ColorFromPalette(pal_faixa_A, cor_faixa_A, intensidade, LINEARBLEND);
-    processa_faixa(p_A, cor_atual);
+    processa_faixa(p_A, cor_atual, p_A_sentido);
   }
   if(amplitude > FAIXA_B) {
     CRGB cor_atual = ColorFromPalette(pal_faixa_B, cor_faixa_B, intensidade, LINEARBLEND);
-    processa_faixa(p_B, cor_atual);
+    processa_faixa(p_B, cor_atual, p_B_sentido);
   }
   if(amplitude > FAIXA_C) {
     CRGB cor_atual = ColorFromPalette(pal_faixa_C, cor_faixa_C, intensidade, LINEARBLEND);
-    processa_faixa(p_C, cor_atual);
+    processa_faixa(p_C, cor_atual, p_C_sentido);
   }
 
   EVERY_N_MILLISECONDS(20) {
@@ -48,10 +52,16 @@ void loop() {
     p_B = random8(PADROES_QTD-1);
     p_C = random8(PADROES_QTD-1);
 
+    p_A_sentido = sorteia_sentido();
+    p_B_sentido = sorteia_sentido();
+    p_C_sentido = sorteia_sentido();
+
     // p_A = (p_A+1) % PADROES_QTD;
     // p_B = (p_A+1) % PADROES_QTD;
     // p_C = (p_B+1) % PADROES_QTD;
+  }
 
+  EVERY_N_SECONDS(42) { // Gera um ciclo de aprox. 3h
     cor_faixa_A = (cor_faixa_A + 1)%255;
     cor_faixa_B = (cor_faixa_B + 1)%255;
     cor_faixa_C = (cor_faixa_C + 1)%255;
