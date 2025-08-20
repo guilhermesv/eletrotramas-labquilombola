@@ -10,8 +10,6 @@
 #define NUM_LEDS    864 // 864
 #define RUIDO_BRILHO     5
 CRGB leds[NUM_LEDS];
-// uint8_t brilho[NUM_LEDS] = {0};
-// // uint8_t tom[NUM_LEDS] = {0};
 
 // CONFIGURACAO AUDIO
 #define MIC_PIN     34
@@ -68,13 +66,13 @@ int t = 0;
 
 // REGRAS
 
-extern char* regras[4] = {
+const char* regras[4] = {
 "111111111111",
 };
 
 // PADROES
 
-extern char* padroes[PADROES_QTD][PADRAO_COL_QTD] = {
+const char* padroes[PADROES_QTD][PADRAO_COL_QTD] = {
 { // 0
 "1-----1-----1-----1-----",
 "11----11----11----11----",
