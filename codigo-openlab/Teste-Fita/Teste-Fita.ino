@@ -98,25 +98,17 @@ void loop() {
   // fadeToBlackBy(leds, NUM_LEDS, 20);
   // FastLED.show();
 
-  EVERY_N_MILLISECONDS(50) {
-    for(int i = 0; i < 50; i++) {
-      leds[random16(0, NUM_LEDS - 1)].val = 255;
-    };
-  }
-  fadeToBlackBy(leds, NUM_LEDS, 20);
-  FastLED.show();
-
 
   // Loop Paleta noise
-  // uint16_t x = 0;
-  // int scale = 10;
-  // uint16_t t = millis() / 4;
+  uint16_t x = 0;
+  int scale = 10;
+  uint16_t t = millis() / 4;
 
-  // for (int i = 0; i < NUM_LEDS; i++) {
-  //   uint8_t noise = inoise8(i * scale + x + t);
-  //   leds[i] = ColorFromPalette(paleta, noise, 255, LINEARBLEND);
-  // }
-  // FastLED.show();
+  for (int i = 0; i < NUM_LEDS; i++) {
+    uint8_t noise = inoise8(i * scale + x + t);
+    leds[i] = ColorFromPalette(paleta, noise, 255, LINEARBLEND);
+  }
+  FastLED.show();
 
   //// Loop Noise Simples
   // uint16_t noise_x = 0;
