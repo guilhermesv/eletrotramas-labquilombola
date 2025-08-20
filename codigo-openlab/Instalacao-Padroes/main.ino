@@ -5,13 +5,13 @@ void setup() {
   pinMode(MIC_PIN, INPUT);
   Serial.begin(115200);
 
-  p_A = random8(PADROES_QTD-1);
-  p_B = random8(PADROES_QTD-1);
-  p_C = random8(PADROES_QTD-1);
+  p_A = 0;
+  p_B = 0;
+  p_C = 0;
   
-  p_A_sentido = sorteia_sentido();
-  p_B_sentido = sorteia_sentido();
-  p_C_sentido = sorteia_sentido();
+  // p_A_sentido = sorteia_sentido();
+  // p_B_sentido = sorteia_sentido();
+  // p_C_sentido = sorteia_sentido();
   // r = random8(REGRAS_QTD);
   
   // p = 6;
@@ -52,21 +52,18 @@ void loop() {
   }
 
   EVERY_N_SECONDS(8) {
-    p_A = random8(PADROES_QTD-1);
-    p_B = random8(PADROES_QTD-1);
-    p_C = random8(PADROES_QTD-1);
+    // p_A = random(PADROES_QTD-1);
+    // p_B = random(PADROES_QTD-1);
+    // p_C = random(PADROES_QTD-1);
 
-    p_A_sentido = sorteia_sentido();
-    p_B_sentido = sorteia_sentido();
-    p_C_sentido = sorteia_sentido();
+    // p_A_sentido = sorteia_sentido();
+    // p_B_sentido = sorteia_sentido();
+    // p_C_sentido = sorteia_sentido();
 
-    // p_A = (p_A+1) % PADROES_QTD;
-    // p_B = (p_A+1) % PADROES_QTD;
-    // p_C = (p_B+1) % PADROES_QTD;
-  }
+    p_A = (p_A+1) % PADROES_QTD;
+    p_B = (p_A+1) % PADROES_QTD;
+    p_C = (p_B+1) % PADROES_QTD;
 
-  EVERY_N_SECONDS(1) { // 42 Gera um ciclo de aprox. 3h
-    cor = (cor + 1)%255;
     Serial.println("cor");
     Serial.println(cor);
 
@@ -81,6 +78,10 @@ void loop() {
     Serial.print(ESP.getFreeHeap());
     Serial.println(" bytes");
     Serial.println("-----------------");
+  }
+
+  EVERY_N_SECONDS(42) { // 42 Gera um ciclo de aprox. 3h
+    cor = (cor + 1)%255;
   }
 
   FastLED.show();
