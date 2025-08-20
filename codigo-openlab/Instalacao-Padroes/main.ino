@@ -24,19 +24,18 @@ void loop() {
   int intensidade = map(amplitude, RUIDO, 3000, RUIDO_BRILHO, 255);
   intensidade = constrain(intensidade, RUIDO_BRILHO, 255);
 
-  CRGB cor_atual = ColorFromPalette(pal_faixa_A, cor_faixa_A, RUIDO_BRILHO, LINEARBLEND);
-  processa_faixa(p_A, cor_atual, p_A_sentido);
+  CRGB cor_atual_A = ColorFromPalette(pal_faixa_A, cor, RUIDO_BRILHO, LINEARBLEND);
+  processa_faixa(p_A, cor_atual_A, p_A_sentido);
   if(amplitude >= RUIDO) { 
-    CRGB cor_atual = ColorFromPalette(pal_faixa_A, cor_faixa_A, intensidade, LINEARBLEND);
-    processa_faixa(p_A, cor_atual, p_A_sentido);
+    processa_faixa(p_A, cor_atual_A, p_A_sentido);
   }
   if(amplitude > FAIXA_B) {
-    CRGB cor_atual = ColorFromPalette(pal_faixa_B, cor_faixa_B, intensidade, LINEARBLEND);
-    processa_faixa(p_B, cor_atual, p_B_sentido);
+    CRGB cor_atual_B = ColorFromPalette(pal_faixa_B, cor, intensidade, LINEARBLEND);
+    processa_faixa(p_B, cor_atual_B, p_B_sentido);
   }
   if(amplitude > FAIXA_C) {
-    CRGB cor_atual = ColorFromPalette(pal_faixa_C, cor_faixa_C, intensidade, LINEARBLEND);
-    processa_faixa(p_C, cor_atual, p_C_sentido);
+    CRGB cor_atual_C = ColorFromPalette(pal_faixa_C, cor, intensidade, LINEARBLEND);
+    processa_faixa(p_C, cor_atual_C, p_C_sentido);
   }
 
   EVERY_N_MILLISECONDS(20) {
@@ -61,22 +60,34 @@ void loop() {
     // p_C = (p_B+1) % PADROES_QTD;
   }
 
-  EVERY_N_SECONDS(42) { // Gera um ciclo de aprox. 3h
-    cor_faixa_A = (cor_faixa_A + 1)%255;
-    cor_faixa_B = (cor_faixa_B + 1)%255;
-    cor_faixa_C = (cor_faixa_C + 1)%255;
+  EVERY_N_SECONDS(1) { // 42 Gera um ciclo de aprox. 3h
+    cor = (cor + 1)%255;
+    Serial.println("cor");
+    Serial.println(cor);
+
+    Serial.println("padrao");
+    Serial.print(p_A);
+    Serial.print(" ");
+    Serial.print(p_B);
+    Serial.print(" ");
+    Serial.println(p_C);
+
+    Serial.print("SRAM livre: ");
+    Serial.print(ESP.getFreeHeap());
+    Serial.println(" bytes");
+    Serial.println("-----------------");
   }
 
   FastLED.show();
   delay(50);
 
   /// Gráfico
-  int rangelimit = 4500;
-  Serial.print(0);
-  Serial.print(" ");
-  Serial.print(rangelimit);
-  Serial.print(" ");
-  Serial.println(amplitude);
+  // int rangelimit = 4500;
+  // Serial.print(0);
+  // Serial.print(" ");
+  // Serial.print(rangelimit);
+  // Serial.print(" ");
+  // Serial.println(amplitude);
   
 }
 

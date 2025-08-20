@@ -36,6 +36,7 @@ int p_C_sentido = 1;
 uint8_t r = 0; // regra selecionada
 
 // CONFIGURACAO PALETAS
+uint8_t cor = 0;
 DEFINE_GRADIENT_PALETTE(r_g_b){
   0  , 255,   0,   0,
   85 ,   0, 255,   0,
@@ -43,7 +44,6 @@ DEFINE_GRADIENT_PALETTE(r_g_b){
   255, 255,   0,   0,
 };
 CRGBPalette16 pal_faixa_A = r_g_b;
-uint8_t cor_faixa_A = 0;
 
 DEFINE_GRADIENT_PALETTE(b_r_g){
   0  ,   0,   0, 255,
@@ -472,10 +472,10 @@ void processa_faixa(uint8_t p, CRGB cor, int sentido) {
   for (int j = 0; j < NUM_LEDS; j += BAR_LEDS) {
     int barra_offset = j / BAR_LEDS;
     bool reverso = barra_offset % 2;
+    int padrao_linha = (barra_offset + t * sentido) % PADRAO_LIN_QTD;
     for (int i = 0; i < BAR_LEDS; i++) {
       int led_indice = reverso ? (j + BAR_LEDS - 1) - i : j + i;
       int padrao_coluna = (i) % PADRAO_COL_QTD;
-      int padrao_linha = (barra_offset + t * sentido) % PADRAO_LIN_QTD;
       if (padroes[p][padrao_linha][padrao_coluna] == regras[0][0]) {
         leds[led_indice] = cor;
       }
