@@ -16,6 +16,10 @@ void setup() {
   
   // p = 6;
   r = 0;
+
+  fill_solid( leds, NUM_LEDS, CRGB::Blue);
+  FastLED.show();
+  delay(5000);
 }
 
 void loop() {
