@@ -19,6 +19,7 @@ void setup() {
 }
 
 void loop() {
+
   // MIC  
   int amplitude = getSmoothedAmplitude();
   int intensidade = map(amplitude, RUIDO, 3000, RUIDO_BRILHO, 255);
