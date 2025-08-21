@@ -44,7 +44,7 @@ void loop() {
   }
 
   EVERY_N_MILLISECONDS(20) {
-    fadeToBlackBy(leds, NUM_LEDS, 100);
+    fadeToBlackBy(leds, NUM_LEDS, 70);
   }
 
   EVERY_N_MILLISECONDS(50) {
@@ -52,17 +52,17 @@ void loop() {
   }
 
   EVERY_N_SECONDS(8) {
-    // p_A = random(PADROES_QTD-1);
-    // p_B = random(PADROES_QTD-1);
-    // p_C = random(PADROES_QTD-1);
+    p_A = random(PADROES_QTD-1);
+    p_B = random(PADROES_QTD-1);
+    p_C = random(PADROES_QTD-1);
 
     // p_A_sentido = sorteia_sentido();
     // p_B_sentido = sorteia_sentido();
     // p_C_sentido = sorteia_sentido();
 
-    p_A = (p_A+1) % PADROES_QTD;
-    p_B = (p_A+1) % PADROES_QTD;
-    p_C = (p_B+1) % PADROES_QTD;
+    // p_A = (p_A+1) % PADROES_QTD;
+    // p_B = (p_A+1) % PADROES_QTD;
+    // p_C = (p_B+1) % PADROES_QTD;
 
     Serial.println("cor");
     Serial.println(cor);
