@@ -31,7 +31,10 @@ void loop() {
 
   CRGB cor_atual_A = ColorFromPalette(pal_faixa_A, cor, RUIDO_BRILHO, LINEARBLEND);
   processa_faixa(p_A, cor_atual_A, p_A_sentido);
-  if(amplitude >= RUIDO) { 
+  if(amplitude >= RUIDO) {
+    // intensidade = map(amplitude, RUIDO, FAIXA_A, RUIDO_BRILHO, 255);
+    // intensidade = constrain(intensidade, RUIDO_BRILHO, 255);
+    CRGB cor_atual_A = ColorFromPalette(pal_faixa_A, cor, intensidade, LINEARBLEND);
     processa_faixa(p_A, cor_atual_A, p_A_sentido);
   }
   if(amplitude > FAIXA_B) {
@@ -64,20 +67,20 @@ void loop() {
     // p_B = (p_A+1) % PADROES_QTD;
     // p_C = (p_B+1) % PADROES_QTD;
 
-    Serial.println("cor");
-    Serial.println(cor);
+    // Serial.println("cor");
+    // Serial.println(cor);
 
-    Serial.println("padrao");
-    Serial.print(p_A);
-    Serial.print(" ");
-    Serial.print(p_B);
-    Serial.print(" ");
-    Serial.println(p_C);
+    // Serial.println("padrao");
+    // Serial.print(p_A);
+    // Serial.print(" ");
+    // Serial.print(p_B);
+    // Serial.print(" ");
+    // Serial.println(p_C);
 
-    Serial.print("SRAM livre: ");
-    Serial.print(ESP.getFreeHeap());
-    Serial.println(" bytes");
-    Serial.println("-----------------");
+    // Serial.print("SRAM livre: ");
+    // Serial.print(ESP.getFreeHeap());
+    // Serial.println(" bytes");
+    // Serial.println("-----------------");
   }
 
   EVERY_N_SECONDS(42) { // 42 Gera um ciclo de aprox. 3h
@@ -88,12 +91,12 @@ void loop() {
   delay(50);
 
   /// Gráfico
-  // int rangelimit = 4500;
-  // Serial.print(0);
-  // Serial.print(" ");
-  // Serial.print(rangelimit);
-  // Serial.print(" ");
-  // Serial.println(amplitude);
+  int rangelimit = 4500;
+  Serial.print(0);
+  Serial.print(" ");
+  Serial.print(rangelimit);
+  Serial.print(" ");
+  Serial.println(amplitude);
   
 }
 

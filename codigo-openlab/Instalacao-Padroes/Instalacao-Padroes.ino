@@ -16,8 +16,8 @@ CRGB leds[NUM_LEDS];
 #define A_SAMPLES   256 // Número de amostras para analisar amplitude
 #define RUIDO   400
 #define FAIXA_A 1000
-#define FAIXA_B 1200
-#define FAIXA_C 1800
+#define FAIXA_B 1500
+#define FAIXA_C 2500
 
 // CONFIGURACAO PADROES
 #define PADROES_QTD     18
