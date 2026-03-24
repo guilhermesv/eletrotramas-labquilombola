@@ -14,7 +14,7 @@ A organização desse repositório é feita em 2 pastas baseada na minha organiz
 
 Eletrotramas é a obra interativa desenvolvida para a residência, que era composta por um conjunto de esteiras com tramadas com fibras de taboa e fitas de LEDs enderaçaveis, 2 caixas com microntroladores e microfone captavam o som de um tambor e criavam padrões nas fitas de acordo com o volume dessa interação.
 
-(Instalação)[https://github.com/guilhermesv/eletrotramas-labquilombola/blob/main/doc/Foto-Instala%C3%A7%C3%A3o.jpg?raw=true]
+(Instalação)[https://github.com/guilhermesv/eletrotramas-labquilombola/blob/main/doc/Foto-Instala%C3%A7%C3%A3o.jpg]
 
 # Lista de Componentes
 
@@ -48,13 +48,13 @@ Eletrotramas é a obra interativa desenvolvida para a residência, que era compo
 
 As esteiras possuem uma estrutura simples, 3 entradas e 3 saídas que foram feitas com os conectores WAGO para facilitar a montagem e conexões entre as fitas de cada canaleta feitas com fio e solda convencional isoladas com termoretrátil.
 
-(Circuito - Esteira)[https://github.com/guilhermesv/eletrotramas-labquilombola/blob/main/doc/Circuito-Esteira.jpg?raw=true]
+(Circuito - Esteira)[https://github.com/guilhermesv/eletrotramas-labquilombola/blob/main/doc/Circuito-Esteira.jpg]
 
 # Circuito - Controlador
 
 A base do controlador é um ESP32 que recebe o áudio do microfone MAX9814, processa e envia as informações para a fita de LED. Foi adicionado ao circuito uma fonte para isolar a alimentação do controle das fitas de LED e também uma chave HH para alternar a alimentação do controle entre a fonte e o USB.
 
-(Circuito - Controle)[https://github.com/guilhermesv/eletrotramas-labquilombola/blob/main/doc/Circuito-Controle.png?raw=true]
+(Circuito - Controle)[https://github.com/guilhermesv/eletrotramas-labquilombola/blob/main/doc/Circuito-Controle.png]
 
 # Circuito - Instalação
 
