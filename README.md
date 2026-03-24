@@ -14,7 +14,7 @@ A organização desse repositório é feita em 2 pastas baseada na minha organiz
 
 Eletrotramas é a obra interativa desenvolvida para a residência, que era composta por um conjunto de esteiras com tramadas com fibras de taboa e fitas de LEDs enderaçaveis, 2 caixas com microntroladores e microfone captavam o som de um tambor e criavam padrões nas fitas de acordo com o volume dessa interação.
 
-(Instalação)[https://github.com/guilhermesv/eletrotramas-labquilombola/blob/main/doc/Foto-Instala%C3%A7%C3%A3o.jpg]
+(Instalação)[/doc/Foto-Instala%C3%A7%C3%A3o.jpg]
 
 # Lista de Componentes
 
