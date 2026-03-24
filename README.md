@@ -48,13 +48,13 @@ Eletrotramas é a obra interativa desenvolvida para a residência, que era compo
 
 As esteiras possuem uma estrutura simples, 3 entradas e 3 saídas que foram feitas com os conectores WAGO para facilitar a montagem e conexões entre as fitas de cada canaleta feitas com fio e solda convencional isoladas com termoretrátil.
 
-(Circuito - Esteira)[https://github.com/guilhermesv/eletrotramas-labquilombola/blob/main/doc/Circuito-Esteira.jpg]
+![Circuito - Esteira](/doc/Circuito-Esteira.jpg)
 
 # Circuito - Controlador
 
 A base do controlador é um ESP32 que recebe o áudio do microfone MAX9814, processa e envia as informações para a fita de LED. Foi adicionado ao circuito uma fonte para isolar a alimentação do controle das fitas de LED e também uma chave HH para alternar a alimentação do controle entre a fonte e o USB.
 
-(Circuito - Controle)[https://github.com/guilhermesv/eletrotramas-labquilombola/blob/main/doc/Circuito-Controle.png]
+![Circuito - Controle](/doc/Circuito-Controle.png)
 
 # Circuito - Instalação
 
@@ -63,7 +63,7 @@ Na instalação foram criados 2 conjuntos, cada um deles com sua própria fonte,
 - Para manter a establidade do sistema e evitar ruídos no sinal enviado pelo controlador é necessário conectar o GND da fonte de 5V com o do controlador.
 - Para fitas de LED de 5V a cada 5m é necessário reforçar a alimentação para evitar queda de tensão. 
 
-(Circuito - Instalação)[https://github.com/guilhermesv/eletrotramas-labquilombola/blob/main/doc/Circuito-Instala%C3%A7%C3%A3o.jpg]
+![Circuito - Instalação](/doc/Circuito-Instala%C3%A7%C3%A3o.jpg)
 
 # Observações
 
