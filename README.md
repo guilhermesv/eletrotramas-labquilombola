@@ -31,7 +31,7 @@ Eletrotramas é a obra interativa desenvolvida para a residência, que foi compo
 - 4 terminal pré-isolado agulha 1,5 a 2,5mm
 - 6 m Cabo PP Flexível  2 x 0,75mm 
 - 2 Placa De Fenolite 5x10cm Perfurada Pcb Ilhada
-- 2 Base acrílico
+- 2 caixas de acrílico cortadas no laser
 
 **Esteira** (quantidade pra fazer 8 esteiras e 36 caneletas de Led)
 
