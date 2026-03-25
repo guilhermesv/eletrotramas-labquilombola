@@ -36,13 +36,14 @@ Eletrotramas é a obra interativa desenvolvida para a residência, que foi compo
 **Esteira** (quantidade pra fazer 8 esteiras e 36 caneletas de Led)
 
 - 36 Perfil plástico U 12x12 mm em PS (poliestireno) de 80 cm 
-- 6 m de cabo 3 vias para fita led
+- 6 m de cabo 3 vias para fita LED
 - 24 m Cabo PP Flexível  3 x 0,5mm
 - Conexão entre as esteiras e controlador
 - 6 m Cabo PP Flexível  2 x 0,75mm 
 - Conexão da fonte para a esteira
 - 48 conectores Wago 3 pólos
-- 1 Fonte de Alimentação 5v 10a
+- 30 m de fita de LED endereçável WS2812 de 5V
+- 2 Fonte de Alimentação 5v 10a
 
 # Circuito - Esteira
 
