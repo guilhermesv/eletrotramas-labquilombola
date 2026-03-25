@@ -12,7 +12,7 @@ A organização desse repositório é feita em 2 pastas baseada na minha organiz
 
 # Eletrotramas
 
-Eletrotramas é a obra interativa desenvolvida para a residência, que era composta por um conjunto de esteiras com tramadas com fibras de taboa e fitas de LEDs enderaçaveis, 2 caixas com microntroladores e microfone captavam o som de um tambor e criavam padrões nas fitas de acordo com o volume dessa interação.
+Eletrotramas é a obra interativa desenvolvida para a residência, que foi composta por um conjunto de esteiras tramadas com fibras de taboa e fitas de LEDs enderaçáveis, 2 caixas com microntroladores e microfone que captavam o som de um tambor e criavam padrões nas fitas de acordo com o volume dessa interação.
 
 ![Instalação](/doc/Foto-Instala%C3%A7%C3%A3o.jpg)
 
@@ -52,7 +52,7 @@ As esteiras possuem uma estrutura simples, 3 entradas e 3 saídas que foram feit
 
 # Circuito - Controlador
 
-A base do controlador é um ESP32 que recebe o áudio do microfone MAX9814, processa e envia as informações para a fita de LED. Foi adicionado ao circuito uma fonte para isolar a alimentação do controle das fitas de LED e também uma chave HH para alternar a alimentação do controle entre a fonte e o USB.
+A base do controlador é um ESP32 que recebe o áudio do microfone MAX9814, processa e envia as informações para a fita de LED. Foi adicionado ao circuito uma fonte para isolar a alimentação do controle das fitas de LED e também uma chave HH para alternar a alimentação do controle entre a fonte e o USB. O controlador se conecta as esteiras por um cabo P2 que leva o sinal de dados e também o GND para equalizar a alimentação da fonte interna com a da das fitas de LED.
 
 ![Circuito - Controle](/doc/Circuito-Controle.png)
 
@@ -68,7 +68,7 @@ Na instalação foram criados 2 conjuntos, cada um deles com sua própria fonte,
 # Observações
 
 - Fitas de LED consomem muita energia, caso queira experimentar esse código, faça pequenos testes antes de utilizar uma grande quantidade de LED.
-- Recomendo a leitura das recomendações sobre alimentação da biblioteca FastLED, disponível no link: https://github.com/FastLED/FastLED/blob/master/cookbook/core-concepts/power.md
+- Recomendo a leitura do texto sobre alimentação da biblioteca FastLED, disponível no link: https://github.com/FastLED/FastLED/blob/master/cookbook/core-concepts/power.md
 
 
 
